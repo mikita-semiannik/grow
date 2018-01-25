@@ -1,8 +1,13 @@
 package com.grow.abstractclass;
 
-public class Main {
+public class Main implements Runnable{
 
     public static void main(String[] args) {
+        (new Main()).run();
+    }
+
+    @Override
+    public void run() {
         Figure circle = new Circle(0, 0, 5);
         Figure rectangle = new Rectangle(0, 0, 4, 5);
 
@@ -18,7 +23,6 @@ public class Main {
         Integer[] array1 [] = {{1, 2}, {3, 4}, {5, 6}};
         Integer[][] array2  = {{1, 2}, {3, 4}, {5, 6}};
         Integer array3 [][] = {{1, 2}, {3, 4}, {5, 6}};
-
     }
 
 }
