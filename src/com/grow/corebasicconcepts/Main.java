@@ -1,5 +1,10 @@
 package com.grow.corebasicconcepts;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 public class Main {
 
     public static void main(String[] args) {
@@ -17,6 +22,17 @@ public class Main {
             System.out.print("i = " + i);
             System.out.println(", j = " + j);
         }
+        
+        // interesting feature
+        Map<String, String> map = new HashMap<String, String>() {{
+            put("key1", "Value1");
+            put("key2", "Value1");
+            put("key3", "Value1");
+        }};
+        
+        List<String> названиеСписка = new ArrayList<>();
+        названиеСписка.add("value1");
+        System.out.println(названиеСписка);
     }
 
 }
