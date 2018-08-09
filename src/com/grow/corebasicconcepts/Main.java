@@ -29,10 +29,7 @@ public class Main {
             put("key2", "Value1");
             put("key3", "Value1");
         }};
-        
-        List<String> названиеСписка = new ArrayList<>();
-        названиеСписка.add("value1");
-        System.out.println(названиеСписка);
+
     }
 
 }
