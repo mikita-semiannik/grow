@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Configuration>
+    <Appenders>
+        <Console name="InfoConsole" target="SYSTEM_OUT">
+            <PatternLayout
+                    pattern="%d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %highlight{%-5level} %c{10}>%M():%L - %msg%n"
+                    disableAnsi="false"/>
+        </Console>
+        <Console name="ErrorConsole" target="SYSTEM_OUT">
+            <PatternLayout
+                    pattern="%highlight{%d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %-5level %c{10}>%M():%L - %msg%n}"
+                    disableAnsi="false"/>
+        </Console>
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout
+                    pattern="%d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %highlight{%-5level} %c{10}>%M():%L - %msg%n"
+                    disableAnsi="false"/>
+        </Console>
+        <Routing name="Routing">
+            <Routes>
+                <Script name="RoutingInit" language="JavaScript"><![CDATA[
+                    logEvent.getLevel();]]>
+            </Script>
+                <Route ref="Console" key="DEBUG"/>
+                <Route ref="InfoConsole" key="INFO"/>
+
+                <Route ref="ErrorConsole" key="ERROR"/>
+                <Route ref="ErrorConsole" key="FATAL"/>
+            </Routes>
+        </Routing>
+    </Appenders>
+    <Loggers>
+        <Root level="ALL">
+            <AppenderRef ref="Routing"/>
+        </Root>
+    </Loggers>
+</Configuration>

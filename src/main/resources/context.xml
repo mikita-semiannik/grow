@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                           http://www.springframework.org/schema/beans/spring-beans.xsd
+                           http://www.springframework.org/schema/context
+                           http://www.springframework.org/schema/context/spring-context-3.1.xsd">
+
+    <context:component-scan base-package="com.grow.spring.core" />
+
+    <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="locations" value="classpath:config.properties"/>
+    </bean>
+
+    <bean id="exampleClass" class="com.grow.spring.core.ExampleClass" scope="prototype"/>
+    <bean name="exampleClassByName" class="com.grow.spring.core.ExampleClass"/>
+    <bean class="com.grow.collection.map.MapService"/>
+    <bean id="resourcesService" class="com.grow.spring.core.ResourcesService"/>
+    <bean id="lookupExample" class="com.grow.spring.core.LookupExample" scope="singleton">
+        <lookup-method bean="exampleClass" name="getExampleClass"/>
+    </bean>
+
+    <bean id="factoryExample" class="com.grow.spring.core.FactoryExample" factory-method="getInstance"/>
+
+    <!-- Register custom bean post processor -->
+    <bean class = "com.grow.spring.core.CustomBeanPostProcessor" />
+</beans>
